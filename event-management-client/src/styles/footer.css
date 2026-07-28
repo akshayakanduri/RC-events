@@ -1,0 +1,29 @@
+.footer {
+  background: #1f232b;
+  color: #fff;
+  text-align: center;
+  padding: 30px 10px;
+  /* margin-top: 60px; */
+}
+
+.footer h3 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.footer p {
+  margin: 8px 0;
+  color: #ddd;
+  font-size: 1.3rem;
+}
+
+.footer .phone {
+  line-height: 1.9;
+}
+
+.footer .copyright {
+  margin-top: 20px;
+  color: #bbb;
+  font-size: rem;
+}

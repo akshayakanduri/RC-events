@@ -1,0 +1,118 @@
+.event-details-page{
+    background:#F8F4EE;
+    padding:40px 0;
+}
+
+.event-details-card{
+    max-width:1050px;
+    background:#fff;
+    border-radius:28px;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,.08);
+}
+
+.event-banner{
+    width:100%;
+    height:500px;
+    object-fit:cover;
+}
+
+.event-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top,rgba(0,0,0,.65),rgba(0,0,0,.1));
+}
+
+.event-banner-content{
+    position:absolute;
+    left:50px;
+    bottom:45px;
+    color:white;
+}
+
+.event-heading{
+    font-family:"Cormorant Garamond",serif;
+    font-size:68px;
+    font-weight:700;
+    margin-bottom:18px;
+}
+
+.event-body{
+    padding:45px;
+}
+
+.info-card{
+    background:#fafafa;
+    border:1px solid #ececec;
+    border-radius:20px;
+    padding:18px 22px;
+    transition:.3s;
+    height:100%;
+}
+
+.info-card h6{
+    font-size:14px;
+    color:#8b8b8b;
+    margin-bottom:6px;
+}
+
+.info-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 30px rgba(0,0,0,.06);
+}
+
+.section-title{
+    font-family:"Cormorant Garamond",serif;
+    font-size:52px;
+    color:#222;
+    margin-bottom: 20px;
+}
+
+.event-description{
+    color:#666;
+    font-size:18px;
+    line-height:34px;
+}
+
+.apply-btn{
+    background:#C69345;
+    color:#fff;
+    border:none;
+    padding:15px 42px;
+    border-radius:999px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.apply-btn:hover{
+    background:#B88638;
+    transform:translateY(-3px);
+}
+
+.location-btn{
+    height:58px;
+    min-width:210px;
+    border-radius:999px;
+    border:2px solid #ddd;
+    background:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    font-size:18px;
+}
+
+.location-btn:hover{
+    border-color:#C69345;
+    color:#C69345;
+}
+
+a.location-btn{
+    color:#222 !important;
+    text-decoration:none !important;
+}
+
+a.location-btn:hover{
+    color:#222 !important;
+    text-decoration:none !important;
+}

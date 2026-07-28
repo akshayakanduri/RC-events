@@ -1,0 +1,74 @@
+/* Navbar */
+
+.navbar{
+    background:linear-gradient(90deg,#1f2937,#111827) !important;
+    padding:16px 0;
+}
+
+/* Navigation Links */
+
+.nav-link-custom{
+    color:#d1d5db;
+    font-weight:600;
+    text-decoration:none;
+    padding:8px 0;
+    margin:0 14px;
+    position:relative;
+    transition:.3s;
+}
+
+/* Hover = only gold text */
+.nav-link-custom:hover{
+    color:#C69345;
+}
+
+/* Underline hidden by default */
+.nav-link-custom::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:100%;
+    height:3px;
+    background:#C69345;
+    border-radius:20px;
+    transform:scaleX(0);
+    transition:.3s;
+}
+
+/* Hover underline */
+
+.nav-link-custom:hover::after{
+
+    width:100%;
+}
+
+/* Active page = gold text */
+.nav-link-custom.active{
+    color:#C69345;
+}
+
+/* Underline only for active page */
+.nav-link-custom.active::after{
+    transform:scaleX(1);
+}
+
+/* Brand */
+
+.navbar-brand span{
+
+    font-size:2rem;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+}
+
+.navbar{
+
+    background:linear-gradient(90deg,#1f2937,#111827) !important;
+
+    box-shadow:0 6px 20px rgba(0,0,0,.15);
+
+    z-index:1000;
+}

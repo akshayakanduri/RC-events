@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>RC Events — Trust &amp; Testimonials Preview</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Caveat:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --charcoal-950:#12151b;
+    --charcoal-900:#181c24;
+    --charcoal-800:#232a35;
+    --charcoal-700:#2d3441;
+    --cream:#F6F1E6;
+    --cream-dim:#EDE6D6;
+    --gold:#C89A56;
+    --gold-light:#E3C384;
+    --muted:#a49c8d;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--cream);
+    font-family:'Inter',sans-serif;
+  }
+  .eyebrow{
+    display:flex; align-items:center; justify-content:center; gap:14px;
+    font-family:'Anton',sans-serif;
+    letter-spacing:0.28em;
+    font-size:13px;
+    color:var(--gold);
+    margin-bottom:18px;
+  }
+  .eyebrow .line{ width:40px; height:1px; background:var(--gold); opacity:0.6; }
+  .eyebrow .diamond{ width:6px; height:6px; border:1px solid var(--gold); transform:rotate(45deg); }
+
+  /* ---------- WHY CHOOSE US ---------- */
+  .trust-section{
+    background:var(--charcoal-950);
+    padding:6.5rem 1.5rem 7rem;
+    text-align:center;
+  }
+  .trust-section h2{
+    font-family:'Playfair Display',serif;
+    font-weight:600;
+    font-size:clamp(2.1rem,4vw,3rem);
+    color:var(--cream);
+    margin:0 0 3.5rem;
+  }
+  .trust-section h2 em{
+    font-style:italic;
+    color:var(--gold-light);
+  }
+  .trust-grid{
+    max-width:1180px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:2rem;
+  }
+  @media(max-width:860px){ .trust-grid{ grid-template-columns:1fr; } }
+
+  .trust-card{
+    position:relative;
+    background:var(--charcoal-800);
+    border:1px solid rgba(200,154,86,0.22);
+    padding:2.75rem 2rem 2.25rem;
+    text-align:left;
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity .7s ease, transform .7s ease, border-color .35s ease, box-shadow .35s ease, background .35s ease;
+  }
+  .trust-card.visible{ opacity:1; transform:translateY(0); }
+  .trust-card::before, .trust-card::after{
+    content:''; position:absolute; width:16px; height:16px; border-color:var(--gold); opacity:0.7;
+  }
+  .trust-card::before{ top:10px; left:10px; border-top:1px solid; border-left:1px solid; }
+  .trust-card::after{ bottom:10px; right:10px; border-bottom:1px solid; border-right:1px solid; }
+  .trust-card:hover{
+    transform:translateY(-8px);
+    border-color:rgba(200,154,86,0.65);
+    background:var(--charcoal-700);
+    box-shadow:0 24px 48px rgba(0,0,0,0.45);
+  }
+  .seal{
+    width:54px; height:54px; border-radius:50%;
+    border:1.5px solid var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:1.5rem;
+    color:var(--gold);
+  }
+  .seal svg{ width:22px; height:22px; }
+  .trust-card h3{
+    font-family:'Playfair Display',serif;
+    font-weight:600;
+    font-size:1.28rem;
+    color:var(--cream);
+    margin:0 0 0.75rem;
+  }
+  .gold-rule{ width:34px; height:2px; background:var(--gold); margin:0 0 1rem; }
+  .trust-card p{
+    font-size:0.95rem;
+    line-height:1.7;
+    color:var(--muted);
+    margin:0;
+  }
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testi-section{
+    background:var(--charcoal-950);
+    padding:6.5rem 1.5rem 7.5rem;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    border-top:1px solid rgba(200,154,86,0.12);
+  }
+  .testi-section h2{
+    font-family:'Playfair Display',serif;
+    font-weight:600;
+    font-size:clamp(2.1rem,4vw,3rem);
+    color:var(--cream);
+    margin:0 0 3.5rem;
+  }
+  .testi-section h2 em{ font-style:italic; color:var(--gold-light); }
+
+  .quote-mark{
+    position:absolute;
+    top:150px; left:50%; transform:translateX(-410px);
+    font-family:'Caveat',cursive;
+    font-size:220px;
+    color:var(--gold);
+    opacity:0.08;
+    pointer-events:none;
+    line-height:1;
+  }
+  @media(max-width:900px){ .quote-mark{ display:none; } }
+
+  .carousel-wrap{
+    max-width:760px;
+    margin:0 auto;
+    position:relative;
+  }
+  .carousel-track{
+    overflow:hidden;
+  }
+  .carousel-slides{
+    display:flex;
+    transition:transform .6s cubic-bezier(.65,0,.35,1);
+  }
+  .slide{
+    flex:0 0 100%;
+    padding:0 10px;
+  }
+  .testi-card{
+    background:var(--cream);
+    border-radius:6px;
+    padding:3rem 2.75rem 2.5rem;
+    box-shadow:0 30px 60px rgba(0,0,0,0.35);
+  }
+  .stars{
+    display:flex; gap:4px; justify-content:center; margin-bottom:1.25rem; color:var(--gold);
+  }
+  .stars svg{ width:16px; height:16px; }
+  .testi-card blockquote{
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    font-size:1.28rem;
+    line-height:1.6;
+    color:#2b2822;
+    margin:0 0 1.75rem;
+  }
+  .testi-divider{ width:40px; height:2px; background:var(--gold); margin:0 auto 1rem; }
+  .testi-name{
+    font-family:'Anton',sans-serif;
+    letter-spacing:0.12em;
+    font-size:0.95rem;
+    color:#2b2822;
+    text-transform:uppercase;
+  }
+  .testi-role{
+    font-family:'Caveat',cursive;
+    font-size:1.2rem;
+    color:var(--gold);
+    margin-top:2px;
+  }
+
+  .carousel-nav{
+    display:flex; align-items:center; justify-content:center; gap:1.75rem;
+    margin-top:2.25rem;
+  }
+  .arrow-btn{
+    width:42px; height:42px; border-radius:50%;
+    border:1px solid rgba(200,154,86,0.5);
+    background:transparent; color:var(--gold-light);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; transition:all .25s ease;
+  }
+  .arrow-btn:hover{ background:var(--gold); color:var(--charcoal-950); border-color:var(--gold); }
+  .dots{ display:flex; gap:9px; }
+  .dot{
+    width:8px; height:8px; border-radius:50%;
+    background:rgba(200,154,86,0.3);
+    border:none; cursor:pointer; padding:0;
+    transition:background .25s ease, transform .25s ease;
+  }
+  .dot.active{ background:var(--gold); transform:scale(1.25); }
+</style>
+</head>
+<body>
+
+<section class="trust-section">
+  <div class="eyebrow"><span class="line"></span><span class="diamond"></span>OUR PROMISE<span class="diamond"></span><span class="line"></span></div>
+  <h2>Why Families &amp; Brands <em>Trust Us</em></h2>
+  <div class="trust-grid" id="trustGrid">
+
+    <div class="trust-card">
+      <div class="seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12l5 5L20 6"/></svg></div>
+      <h3>Professional Event Planning</h3>
+      <div class="gold-rule"></div>
+      <p>Experienced planners for weddings, birthdays, and corporate events.</p>
+    </div>
+
+    <div class="trust-card">
+      <div class="seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12l5 5L20 6"/></svg></div>
+      <h3>Affordable Packages</h3>
+      <div class="gold-rule"></div>
+      <p>Choose from multiple packages that fit your budget.</p>
+    </div>
+
+    <div class="trust-card">
+      <div class="seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12l5 5L20 6"/></svg></div>
+      <h3>Trusted Vendors</h3>
+      <div class="gold-rule"></div>
+      <p>Decoration, catering, photography, DJ and more from trusted partners.</p>
+    </div>
+
+    <div class="trust-card">
+      <div class="seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12l5 5L20 6"/></svg></div>
+      <h3>Personalized Experiences</h3>
+      <div class="gold-rule"></div>
+      <p>Every event is unique. We customize every detail to match your vision.</p>
+    </div>
+
+    <div class="trust-card">
+      <div class="seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12l5 5L20 6"/></svg></div>
+      <h3>Quality &amp; Excellence</h3>
+      <div class="gold-rule"></div>
+      <p>We ensure top-quality service and memorable experiences every time.</p>
+    </div>
+
+    <div class="trust-card">
+      <div class="seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12l5 5L20 6"/></svg></div>
+      <h3>24/7 Customer Support</h3>
+      <div class="gold-rule"></div>
+      <p>We're here to help you before, during, and after your event.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="testi-section">
+  <div class="quote-mark">&ldquo;</div>
+  <div class="eyebrow"><span class="line"></span><span class="diamond"></span>WHAT OUR CLIENTS SAY<span class="diamond"></span><span class="line"></span></div>
+  <h2>Client <em>Testimonials</em></h2>
+
+  <div class="carousel-wrap">
+    <div class="carousel-track">
+      <div class="carousel-slides" id="slides">
+
+        <div class="slide">
+          <div class="testi-card">
+            <div class="stars">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+            </div>
+            <blockquote>&ldquo;Amazing wedding planning service. Everything was perfectly organized.&rdquo;</blockquote>
+            <div class="testi-divider"></div>
+            <div class="testi-name">Priya</div>
+            <div class="testi-role">Wedding client</div>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="testi-card">
+            <div class="stars">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+            </div>
+            <blockquote>&ldquo;Birthday decoration exceeded our expectations. Highly recommended.&rdquo;</blockquote>
+            <div class="testi-divider"></div>
+            <div class="testi-name">Rahul</div>
+            <div class="testi-role">Birthday client</div>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="testi-card">
+            <div class="stars">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+            </div>
+            <blockquote>&ldquo;Professional corporate event management with excellent support.&rdquo;</blockquote>
+            <div class="testi-divider"></div>
+            <div class="testi-name">Sneha</div>
+            <div class="testi-role">Corporate client</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="carousel-nav">
+      <button class="arrow-btn" id="prevBtn" aria-label="Previous testimonial">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div class="dots" id="dots"></div>
+      <button class="arrow-btn" id="nextBtn" aria-label="Next testimonial">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  // ---- scroll reveal for trust cards ----
+  const cards = document.querySelectorAll('.trust-card');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        const idx = Array.from(cards).indexOf(entry.target);
+        entry.target.style.transitionDelay = (idx % 3) * 0.12 + 's';
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  cards.forEach(c => io.observe(c));
+
+  // ---- testimonial carousel ----
+  const slidesEl = document.getElementById('slides');
+  const slides = document.querySelectorAll('.slide');
+  const dotsEl = document.getElementById('dots');
+  let index = 0;
+  let autoplay;
+
+  slides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(d);
+  });
+  const dots = document.querySelectorAll('.dot');
+
+  function render(){
+    slidesEl.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === index));
+  }
+  function goTo(i){ index = (i + slides.length) % slides.length; render(); }
+  function next(){ goTo(index + 1); }
+  function prev(){ goTo(index - 1); }
+
+  document.getElementById('nextBtn').addEventListener('click', () => { next(); restart(); });
+  document.getElementById('prevBtn').addEventListener('click', () => { prev(); restart(); });
+
+  function start(){ autoplay = setInterval(next, 4500); }
+  function restart(){ clearInterval(autoplay); start(); }
+  start();
+
+  const wrap = document.querySelector('.carousel-wrap');
+  wrap.addEventListener('mouseenter', () => clearInterval(autoplay));
+  wrap.addEventListener('mouseleave', start);
+</script>
+
+</body>
+</html>

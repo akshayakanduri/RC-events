@@ -1,0 +1,161 @@
+/* .hero-section{
+    background:#F8F4EE;
+    padding:80px 0 120px;
+    position:relative;
+    overflow:hidden;
+} */
+.hero-section{
+     /* background:#f8f3eb; */
+    background:#F8F4EE; 
+    padding:65px 0 80px;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero-container{
+    width:92%;
+    max-width:1400px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:45% 55%;
+    align-items:center;
+    gap:60px;
+}
+
+.hero-left{
+    display:flex;
+    flex-direction:column;
+}
+
+.hero-right{
+    display:flex;
+    justify-content:center;
+}
+
+.hero-tag{
+    color:#C69345;
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:4px;
+    margin-bottom:10px;
+}
+
+.hero-title{
+    font-family:"Cormorant Garamond", serif;
+    font-size:74px;
+    line-height:1.05;
+    font-weight:600;
+    color:#222;
+    margin-bottom:10px;
+}
+
+.hero-title span{
+    color:#C69345;
+}
+
+/* .hero-line{
+    width:170px;
+    height:2px;
+    background:#C69345;
+    margin:30px 0;
+} */
+
+.hero-text{
+    font-size:22px;
+    line-height:1.8;
+    color:#666;
+    max-width:560px;
+}
+
+.hero-buttons{
+    margin-top:15px;
+    display:flex;
+    gap:20px;
+}
+
+.btn-gold{
+    padding:18px 42px;
+    border-radius:50px;
+    background:#C69345;
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.btn-outline{
+    padding:18px 42px;
+    border-radius:50px;
+    border:2px solid #C69345;
+    color:#C69345;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.hero-video{
+    width:80%;
+    height:400px;
+    object-fit:cover;
+
+    border-radius:20px;
+
+    box-shadow:0 25px 60px rgba(0,0,0,.18);
+}
+
+.hero-right{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+
+.hero-container{
+    position: relative;
+    z-index: 2;
+}
+
+.hero-tag-wrapper{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:18px;
+}
+
+.hero-tag{
+    color:#C69345;
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:4px;
+    margin:0;
+}
+
+.hero-tag-line{
+    flex:1;
+    max-width:60px;
+    height:1px;
+    background:#C69345;
+    position:relative;
+}
+
+.hero-tag-line::after{
+    content:"";
+    width:6px;
+    height:6px;
+    background:#F8F4EE;
+    border:1px solid #C69345;
+    transform:rotate(45deg);
+    position:absolute;
+    right:-3px;
+    top:-3px;
+}
+
+/* .hero-flourish{
+    display:flex;
+    justify-content:center;
+    margin:10px 0 24px;
+} */
+
+/* .hero-flourish img{
+    width:120px;
+    height:auto;
+} */

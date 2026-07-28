@@ -1,0 +1,26 @@
+.register-page{
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    padding:40px;
+}
+
+.register-card{
+    width: 780px;
+    max-width: 95%;
+
+    background: #fff;
+    border-radius: 28px;
+    padding: 50px;
+
+    border: 1px solid rgba(212,165,74,.45);
+
+    box-shadow: 0 20px 60px rgba(0,0,0,.12);
+}

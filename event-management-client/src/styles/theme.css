@@ -1,0 +1,28 @@
+:root {
+  --primary: #6C63FF;
+  --secondary: #D4AF37;
+  --dark: #1F2937;
+  --light: #F8F9FA;
+  --white: #FFFFFF;
+  --text: #444444;
+
+  --shadow: 0 10px 30px rgba(0,0,0,0.1);
+  --radius: 12px;
+  --transition: all 0.3s ease;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family: "Poppins", sans-serif;
+    background: var(--light);
+    color: var(--text);
+}

@@ -1,0 +1,297 @@
+/* ===================================
+   PROFILE PAGE
+=================================== */
+
+.profile-page{
+    background:#F8F4EE;
+    min-height:100vh;
+    padding:0px 0;
+}
+
+/* ===================================
+   CARD
+=================================== */
+
+.profile-card{
+    height:600px;
+
+    max-width:600px;
+
+    background:#fff;
+
+    border-radius:28px;
+
+    padding:40px;
+
+    box-shadow:
+        0 15px 40px rgba(198,147,69,.12),
+        0 5px 12px rgba(0,0,0,.05);
+
+    transition:.35s;
+}
+
+.profile-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:
+        0 25px 55px rgba(198,147,69,.16),
+        0 10px 25px rgba(0,0,0,.08);
+}
+
+/* ===================================
+   HEADER
+=================================== */
+
+.profile-header{
+
+    text-align:center;
+
+    margin-bottom:25px;
+}
+
+.profile-avatar{
+    width:100px;
+    height:100px;
+    margin:auto;
+    border-radius:50%;
+    background:#C69345;
+    color:white;
+    font-size:42px;
+    font-weight:700;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:20px;
+    overflow:hidden;
+}
+
+.profile-avatar-img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+}
+
+
+.profile-header h2{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:52px;
+
+    color:#1f1f1f;
+
+    margin-bottom:12px;
+}
+
+.profile-role{
+
+    background:#C69345;
+
+    color:white;
+
+    padding:8px 22px;
+
+    border-radius:50px;
+
+    font-size:14px;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+}
+
+/* ===================================
+   INFO
+=================================== */
+
+.profile-info{
+
+    margin-top:35px;
+}
+
+.info-item{
+
+    margin-bottom:28px;
+}
+
+.info-item h5{
+
+    font-size:20px;
+
+    color:#222;
+
+    margin-bottom:8px;
+
+    font-weight:600;
+}
+
+.info-item p{
+    color:#666;
+    font-size:18px;
+    font-weight:400;
+    margin:0 0 28px;
+}
+
+/* ===================================
+   BUTTONS
+=================================== */
+
+.profile-buttons{
+
+    display:flex;
+
+    gap:18px;
+
+    flex-wrap:wrap;
+
+    margin-top:40px;
+    justify-content: center;
+}
+
+.btn-primary-custom{
+
+    background:#C69345;
+
+    color:white;
+
+    padding:14px 30px;
+
+    border-radius:40px;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.btn-primary-custom:hover{
+
+    background:#b8822d;
+
+    color:white;
+}
+
+.btn-secondary-custom{
+
+    background:white;
+
+    color:#1f1f1f;
+
+    border:2px solid #C69345;
+
+    padding:14px 30px;
+
+    border-radius:40px;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.btn-secondary-custom:hover{
+
+    background:#C69345;
+
+    color:white;
+}
+
+/* ===================================
+   HR
+=================================== */
+
+.profile-card hr{
+
+    margin:35px 0;
+
+    opacity:.15;
+}
+
+/* ===================================
+   RESPONSIVE
+=================================== */
+
+@media(max-width:768px){
+
+.profile-card{
+
+padding:35px 25px;
+
+}
+
+.profile-header h2{
+
+font-size:40px;
+
+}
+
+.profile-buttons{
+
+flex-direction:column;
+
+}
+
+.btn-primary-custom,
+.btn-secondary-custom{
+
+width:100%;
+
+text-align:center;
+
+}
+}
+
+.profile-edit-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px;
+    height: 56px;
+    padding: 0 24px !important;
+    line-height: 1;
+}
+
+.btn-primary-custom,
+.profile-edit-btn {
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 24px !important;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+/* .info-label{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    font-size:20px;
+    font-weight:400;      /* lighter */
+    /* color:#222; */
+
+    /* margin-bottom:10px;
+}  */
+
+.info-label{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:7px;
+}
+
+.info-label span{
+    color:#222;
+    font-size:20px;
+    font-weight:400;
+}
+
+.icon-primary{
+    color:#C69345;
+    stroke-width:1.8;
+    margin-right:3px;
+}
