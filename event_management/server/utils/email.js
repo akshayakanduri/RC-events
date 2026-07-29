@@ -5,9 +5,7 @@ dotenv.config();
 
 
 const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
+    service: "gmail",
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
@@ -87,6 +85,7 @@ const sendBookingEmail = async (
 
   } catch (error) {
     console.error("Error sending approval email:", error);
+    throw error;
   }
 };
 
@@ -150,6 +149,7 @@ const sendRejectionEmail = async (userEmail, userName, eventTitle) => {
 
   } catch (error) {
     console.error("Error sending rejection email:", error);
+    throw error;
   }
 };
 
@@ -179,6 +179,7 @@ const sendOTPEmail = async (userEmail, otp, type) => {
         console.log(`OTP sent to ${userEmail} for ${type}`);
     } catch (error) {
         console.error('Error sending OTP email:', error);
+        throw error;
     }
 };
 
