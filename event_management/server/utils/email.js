@@ -24,30 +24,6 @@ const sendEmail = async ({ toEmail, toName, subject, html }) => {
   });
 };
 
-const sendEmail = async ({ toEmail, toName, subject, html }) => {
-  try {
-    await apiInstance.sendTransacEmail({
-      sender: {
-        name: "RC Events",
-        email: "akshayakanduri@gmail.com", // Your verified sender
-      },
-      to: [
-        {
-          email: toEmail,
-          name: toName || toEmail,
-        },
-      ],
-      subject,
-      htmlContent: html,
-    });
-
-    console.log(`Email sent to ${toEmail}`);
-  } catch (err) {
-    console.error("Brevo Error:", err);
-    throw err;
-  }
-};
-
 const sendBookingEmail = async (
   userEmail,
   userName,
