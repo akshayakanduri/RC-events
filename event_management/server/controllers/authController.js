@@ -91,10 +91,17 @@ if (req.file) {
         });
 
     } catch (error) {
-        res.status(400).json({
-            error: error.message
-        });
+    try {
+        await User.deleteOne({ email });
+        await OTP.deleteMany({ email });
+    } catch (cleanupError) {
+        console.error("Cleanup failed:", cleanupError);
     }
+
+    return res.status(500).json({
+        error: "Failed to send verification email. Please try again."
+    });
+}
 };
 
 // // Login User
