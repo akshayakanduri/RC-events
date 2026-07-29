@@ -87,204 +87,109 @@ function Register() {
 
 <form onSubmit={handleSubmit}>
 
-  {/* ================= DESKTOP FORM ================= */}
+<div className="row g-3">
 
-  <div className="d-none d-md-block">
-
-    <div className="row gx-4">
-
-      {/* Left Column */}
-      <div className="col-md-6">
-
-        <div className="mb-3">
-          <label className="form-label fw-bold">Full Name</label>
-          <input
-            type="text"
-            name="name"
-            placeholder="Enter your full name"
-            className="form-control py-1 px-3"
-            onChange={handleChange}
-            required
-            style={{ borderRadius: "12px" }}
-          />
-        </div>
-
-        <div className="mb-3">
-          <label className="form-label fw-bold">Password</label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Create password"
-            className="form-control py-2 px-3"
-            onChange={handleChange}
-            required
-            style={{ borderRadius: "12px" }}
-          />
-        </div>
-
-        <div className="mb-3">
-          <label className="form-label fw-bold">Location</label>
-          <input
-            type="text"
-            name="location"
-            placeholder="Location"
-            className="form-control py-2 px-3"
-            onChange={handleChange}
-            required
-            style={{ borderRadius: "12px" }}
-          />
-        </div>
-
-      </div>
-
-      {/* Right Column */}
-      <div className="col-md-6">
-
-        <div className="mb-3">
-          <label className="form-label fw-bold">Email</label>
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter your email"
-            className="form-control py-2 px-3"
-            onChange={handleChange}
-            required
-            style={{ borderRadius: "12px" }}
-          />
-        </div>
-
-        <div className="mb-3">
-          <label className="form-label fw-bold">Phone</label>
-          <input
-            type="text"
-            name="phone"
-            placeholder="Phone number"
-            className="form-control py-2 px-3"
-            onChange={handleChange}
-            required
-            style={{ borderRadius: "12px" }}
-          />
-        </div>
-
-        <div className="mb-3">
-          <label className="form-label fw-bold">Profile Image</label>
-          <input
-            type="file"
-            accept="image/*"
-            className="form-control py-2 px-3"
-            style={{ borderRadius: "12px" }}
-            onChange={(e) =>
-              setForm({
-                ...form,
-                profileImage: e.target.files[0],
-              })
-            }
-          />
-        </div>
-
-      </div>
-
-    </div>
-
+  {/* Full Name */}
+  <div className="col-12 col-md-6">
+    <label className="form-label fw-bold">Full Name</label>
+    <input
+      type="text"
+      name="name"
+      placeholder="Enter your full name"
+      className="form-control py-2 px-3"
+      onChange={handleChange}
+      required
+      style={{ borderRadius: "12px" }}
+    />
   </div>
 
-  {/* ================= MOBILE FORM ================= */}
+  {/* Email */}
+  <div className="col-12 col-md-6">
+    <label className="form-label fw-bold">Email</label>
+    <input
+      type="email"
+      name="email"
+      placeholder="Enter your email"
+      className="form-control py-2 px-3"
+      onChange={handleChange}
+      required
+      style={{ borderRadius: "12px" }}
+    />
+  </div>
 
-  <div className="d-block d-md-none">
+  {/* Phone */}
+  <div className="col-12 col-md-6">
+    <label className="form-label fw-bold">Phone</label>
+    <input
+      type="text"
+      name="phone"
+      placeholder="Phone number"
+      className="form-control py-2 px-3"
+      onChange={handleChange}
+      required
+      style={{ borderRadius: "12px" }}
+    />
+  </div>
 
-      <div className="mb-3">
-  <label className="form-label fw-bold">Full Name</label>
-  <input
-    type="text"
-    name="name"
-    placeholder="Enter your full name"
-    className="form-control py-2 px-3"
-    onChange={handleChange}
-    required
-    style={{ borderRadius: "12px" }}
-  />
+  {/* Password */}
+  <div className="col-12 col-md-6">
+    <label className="form-label fw-bold">Password</label>
+    <input
+      type="password"
+      name="password"
+      placeholder="Create password"
+      className="form-control py-2 px-3"
+      onChange={handleChange}
+      required
+      style={{ borderRadius: "12px" }}
+    />
+  </div>
+
+  {/* Location */}
+  <div className="col-12 col-md-6">
+    <label className="form-label fw-bold">Location</label>
+    <input
+      type="text"
+      name="location"
+      placeholder="Location"
+      className="form-control py-2 px-3"
+      onChange={handleChange}
+      required
+      style={{ borderRadius: "12px" }}
+    />
+  </div>
+
+  {/* Profile Image */}
+  <div className="col-12 col-md-6">
+    <label className="form-label fw-bold">Profile Image</label>
+    <input
+      type="file"
+      accept="image/*"
+      className="form-control py-2 px-3"
+      style={{ borderRadius: "12px" }}
+      onChange={(e) =>
+        setForm({
+          ...form,
+          profileImage: e.target.files[0],
+        })
+      }
+    />
+  </div>
+
 </div>
 
-<div className="mb-3">
-  <label className="form-label fw-bold">Phone</label>
-  <input
-    type="text"
-    name="phone"
-    placeholder="Phone number"
-    className="form-control py-2 px-3"
-    onChange={handleChange}
-    required
-    style={{ borderRadius: "12px" }}
-  />
-</div>
-
-<div className="mb-3">
-  <label className="form-label fw-bold">Email</label>
-  <input
-    type="email"
-    name="email"
-    placeholder="Enter your email"
-    className="form-control py-2 px-3"
-    onChange={handleChange}
-    required
-    style={{ borderRadius: "12px" }}
-  />
-</div>
-
-<div className="mb-3">
-  <label className="form-label fw-bold">Password</label>
-  <input
-    type="password"
-    name="password"
-    placeholder="Create password"
-    className="form-control py-2 px-3"
-    onChange={handleChange}
-    required
-    style={{ borderRadius: "12px" }}
-  />
-</div>
-
-<div className="mb-3">
-  <label className="form-label fw-bold">Location</label>
-  <input
-    type="text"
-    name="location"
-    placeholder="Location"
-    className="form-control py-2 px-3"
-    onChange={handleChange}
-    required
-    style={{ borderRadius: "12px" }}
-  />
-</div>
-
-<div className="mb-3">
-  <label className="form-label fw-bold">Profile Image</label>
-  <input
-    type="file"
-    accept="image/*"
-    className="form-control py-2 px-3"
-    style={{ borderRadius: "12px" }}
-    onChange={(e) =>
-      setForm({
-        ...form,
-        profileImage: e.target.files[0],
-      })
-    }
-  />
-</div>
-</div>
-  <button
-    type="submit"
-    className="btn w-100 py-2 fw-bold mt-2"
-    style={{
-      background: "#111827",
-      color: "white",
-      borderRadius: "14px",
-      fontSize: "18px",
-    }}
-  >
-    Create Account
-  </button>
+<button
+  type="submit"
+  className="btn w-100 py-2 fw-bold mt-3"
+  style={{
+    background: "#111827",
+    color: "white",
+    borderRadius: "14px",
+    fontSize: "18px",
+  }}
+>
+  Create Account
+</button>
 
 </form>
 
