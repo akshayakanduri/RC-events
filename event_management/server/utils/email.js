@@ -1,26 +1,52 @@
-const nodemailer = require("nodemailer");
+const { BrevoClient } = require("@getbrevo/brevo");
 const dotenv = require("dotenv");
 
 dotenv.config();
 
-const transporter = nodemailer.createTransport({
-  host: "smtp-relay.brevo.com",
-  port: 587,
-  secure: false,
-  requireTLS: true,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
+const brevo = new BrevoClient({
+  apiKey: process.env.BREVO_API_KEY,
 });
 
-transporter.verify((error) => {
-  if (error) {
-    console.log("Mail Error:", error);
-  } else {
-    console.log("Mail Server is ready");
+const sendEmail = async ({ toEmail, toName, subject, html }) => {
+  await brevo.transactionalEmails.sendTransacEmail({
+    sender: {
+      name: "RC Events",
+      email: "akshayakanduri@gmail.com",
+    },
+    to: [
+      {
+        email: toEmail,
+        name: toName,
+      },
+    ],
+    subject,
+    htmlContent: html,
+  });
+};
+
+const sendEmail = async ({ toEmail, toName, subject, html }) => {
+  try {
+    await apiInstance.sendTransacEmail({
+      sender: {
+        name: "RC Events",
+        email: "akshayakanduri@gmail.com", // Your verified sender
+      },
+      to: [
+        {
+          email: toEmail,
+          name: toName || toEmail,
+        },
+      ],
+      subject,
+      htmlContent: html,
+    });
+
+    console.log(`Email sent to ${toEmail}`);
+  } catch (err) {
+    console.error("Brevo Error:", err);
+    throw err;
   }
-});
+};
 
 const sendBookingEmail = async (
   userEmail,
@@ -82,7 +108,12 @@ const sendBookingEmail = async (
       `
     };
 
-    await transporter.sendMail(mailOptions);
+    await sendEmail({
+  toEmail: userEmail,
+  toName: userName,
+  subject: mailOptions.subject,
+  html: mailOptions.html,
+});
     console.log("Approval email sent to", userEmail);
 
   } catch (error) {
@@ -145,7 +176,12 @@ const sendRejectionEmail = async (userEmail, userName, eventTitle) => {
       `
     };
 
-    await transporter.sendMail(mailOptions);
+    await sendEmail({
+  toEmail: userEmail,
+  toName: userName,
+  subject: mailOptions.subject,
+  html: mailOptions.html,
+});
 
     console.log("Rejection email sent to", userEmail);
 
@@ -177,7 +213,12 @@ const sendOTPEmail = async (userEmail, otp, type) => {
                 </div>
             `
         };
-        await transporter.sendMail(mailOptions);
+        await sendEmail({
+  toEmail: userEmail,
+  toName: userEmail,
+  subject: mailOptions.subject,
+  html: mailOptions.html,
+});
         console.log(`OTP sent to ${userEmail} for ${type}`);
     } catch (error) {
         console.error('Error sending OTP email:', error);
