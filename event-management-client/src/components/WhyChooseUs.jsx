@@ -1,4 +1,3 @@
-import { FaCheck } from "react-icons/fa";
 import "../styles/WhyChooseUs.css";
 
 const features = [
@@ -37,7 +36,9 @@ function WhyChooseUs() {
   
 
   <p className="trust-tagline">
-    BUILT ON TRUST, SUSTAINED BY CARE
+    BUILT ON TRUST
+  <br />
+  SUSTAINED BY CARE
   </p>
 
   <h2 className="trust-title">

@@ -14,7 +14,7 @@ function Navbar() {
   };
 
   return (
-      <nav className="navbar navbar-expand-lg navbar-dark shadow sticky-top">
+      <nav className="navbar navbar-expand-lg navbar-dark shadow ">
       <div className="container">
 
         <Link
@@ -26,25 +26,12 @@ function Navbar() {
   }}
 >
   <img
-    src="/logo.png"
-    alt="RC Events"
-    style={{
-      width: "48px",
-      height: "48px",
-      objectFit: "cover",
-      borderRadius: "50%",
-      marginRight: "12px",
-    }}
-  />
+  src="/logo.png"
+  alt="RC Events"
+  className="navbar-logo"
+/>
 
-  <span
-    className="fw-bold"
-    style={{
-      color: "#ffffff",
-      fontSize: "2rem",
-      letterSpacing: "1px",
-    }}
-  >
+  <span className="fw-bold navbar-title">
     RC Events
   </span>
 </Link>
@@ -108,7 +95,7 @@ function Navbar() {
               </NavLink>
                 </li>
 
-                <li className="nav-item ms-3">
+                <li className="nav-item logout-item">
                   <button
                     className="btn"
                     style={{
@@ -127,9 +114,9 @@ function Navbar() {
               </>
             ) : (
               <>
-                <li className="nav-item ms-3">
+                <li className="nav-item auth-item">
                   <Link
-                    className="btn me-2"
+                    className="btn login-btn"
                     style={{
                       border: "1px solid #c69345",
                       color: "#c69345",

@@ -26,10 +26,18 @@
 .trust-tagline{
     color:#C69345;
     text-transform:uppercase;
-    letter-spacing:5px;
+    letter-spacing:6px;
     font-size:15px;
     font-weight:600;
     margin-bottom:18px;
+}
+@media (max-width:768px){
+
+.trust-tagline{
+    letter-spacing:3px;
+    line-height:1.9;
+}
+
 }
 
 .trust-title{
@@ -51,6 +59,13 @@
     color:#666;
     font-size:22px;
     line-height:1.8;
+}
+@media (max-width:768px){
+
+.trust-description{
+    padding:0 12px;
+}
+
 }
 
 

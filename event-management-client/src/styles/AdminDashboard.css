@@ -1,0 +1,62 @@
+.admin-dashboard{
+    padding-top:30px;
+    padding-bottom:30px;
+}
+
+.event-item img{
+    max-width:110px;
+}
+
+@media (max-width:768px){
+
+.admin-dashboard{
+    padding-top:20px;
+    padding-bottom:20px;
+}
+
+.admin-dashboard h2{
+    font-size:30px;
+}
+
+.admin-dashboard h4{
+    font-size:28px;
+}
+
+.admin-actions .btn{
+    width:100%;
+}
+
+.event-item{
+    text-align:center;
+}
+
+.event-item img{
+    width:100%;
+    max-width:250px;
+    height:180px !important;
+    margin-bottom:15px;
+}
+
+.event-item .text-end{
+    width:100%;
+}
+
+.event-item .btn{
+    width:100%;
+    margin:5px 0;
+}
+
+.card-body{
+    padding:20px;
+}
+
+.badge{
+    font-size:12px !important;
+}
+
+.btn-success,
+.btn-danger{
+    width:100%;
+}
+
+}

@@ -7,6 +7,7 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import API from "../services/api";
+import "../styles/AdminDashboard.css";
 
 function AdminDashboard() {
   const [events, setEvents] = useState([]);
@@ -131,7 +132,7 @@ const rejectBooking = async (id) => {
 };
 
   return (
-    <div className="container py-5">
+    <div className="container py-4 admin-dashboard">
 
       <div
   className="rounded-4 shadow p-4 mb-4"
@@ -140,7 +141,7 @@ const rejectBooking = async (id) => {
     color: "white",
   }}
 >
-  <div className="d-flex justify-content-between align-items-center">
+  <div className="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3">
 
     <div>
       <h2 className="fw-bold mb-1">
@@ -152,7 +153,7 @@ const rejectBooking = async (id) => {
       </p>
     </div>
 
-    <div className="d-flex gap-2">
+    <div className="d-flex flex-column flex-sm-row gap-2 admin-actions">
   <Link
     to="/admin/categories"
     className="btn btn-outline-light px-4 py-2 fw-semibold rounded-3"
@@ -408,7 +409,7 @@ Pending & Approved
         {events.map((event) => (
   <div
     key={event._id}
-    className="d-flex align-items-center border rounded-4 p-3 mb-3"
+    className="d-flex flex-column flex-md-row align-items-center border rounded-4 p-3 mb-3 event-item"
   >
     <img
       src={event.image || event.bannerImage}
@@ -441,7 +442,7 @@ Pending & Approved
 
     </div>
 
-    <div className="text-end">
+    <div className="text-end mt-3 mt-md-0">
 
       <Link
         to={`/admin/edit-event/${event._id}`}
@@ -541,7 +542,7 @@ Pending & Approved
 
 {booking.status === "Pending" && (
 
-  <div className="mt-3 d-flex gap-2">
+  <div className="mt-3 d-flex flex-column flex-sm-row gap-2">
 
     <button
       className="btn btn-success rounded-pill px-3"

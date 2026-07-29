@@ -24,3 +24,47 @@
 
     box-shadow: 0 20px 60px rgba(0,0,0,.12);
 }
+
+@media (max-width:768px){
+
+    .register-page{
+        padding:20px 15px;
+        align-items:flex-start;
+    }
+
+    .register-card{
+        width:100%;
+        max-width:100%;
+        padding:30px 20px;
+        border-radius:22px;
+        margin:20px 0;
+    }
+
+    .register-card h1{
+    font-size:42px;
+    line-height:1.1;
+}
+
+.register-card p{
+    font-size:16px;
+}
+
+.register-card .form-label{
+    font-size:17px;
+}
+
+.register-card .form-control{
+    height:52px;
+    font-size:16px;
+}
+
+.register-card .mb-3{
+    margin-bottom:18px !important;
+}
+
+
+.register-card input[type="file"]{
+    padding:12px;
+    font-size:15px;
+}
+}
