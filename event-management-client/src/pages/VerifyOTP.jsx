@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import API from "../services/api";
+import "../styles/VerifyOTP.css";
 
 function VerifyOTP() {
   const navigate = useNavigate();
@@ -62,34 +63,21 @@ function VerifyOTP() {
     };
 
   return (
-  <div
-    className="d-flex justify-content-center align-items-center"
-    style={{
-      minHeight: "100vh",
-      background: "#f4f7fb",
-    }}
-  >
+  <div className="verify-page">
     <div
-      className="card border-0 shadow-lg p-5"
-      style={{
-        width: "100%",
-        maxWidth: "650px",
-        borderRadius: "22px",
-      }}
+      className="card border-0 shadow-lg p-5 verify-card"
     >
       <div className="text-center">
 
-        <h1 className="fw-bold display-3">
+        <h1 className="fw-bold verify-title">
           Verify OTP
         </h1>
 
-        <p
-          className="text-muted fs-4 mt-3"
-        >
+        <p className="text-muted verify-subtitle mt-3">
           OTP sent to
         </p>
 
-        <h4 className="fw-bold">
+        <h4 className="fw-bold verify-email">
           {email}
         </h4>
 
@@ -103,7 +91,7 @@ function VerifyOTP() {
 
       <form onSubmit={handleSubmit}>
 
-        <div className="d-flex justify-content-center gap-3 my-4">
+        <div className="otp-container">
 
           {otp.map((digit, index) => (
 
@@ -113,12 +101,7 @@ function VerifyOTP() {
               type="text"
               value={digit}
               maxLength={1}
-              className="form-control text-center fw-bold fs-3"
-              style={{
-                width: "65px",
-                height: "70px",
-                borderRadius: "14px",
-              }}
+              className="otp-input"
               onChange={(e) =>
                 handleOtpChange(
                   e.target.value,
@@ -154,13 +137,7 @@ function VerifyOTP() {
 
         <button
           type="submit"
-          className="btn w-100 py-3 fw-bold"
-          style={{
-            background: "#111827",
-            color: "white",
-            borderRadius: "14px",
-            fontSize: "20px",
-          }}
+          className="btn w-100 py-3 fw-bold verify-btn"
         >
           Verify OTP
         </button>
