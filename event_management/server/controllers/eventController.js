@@ -92,7 +92,8 @@ const event = await Event.create({
     dressCode: req.body.dressCode,
     description: req.body.description,
     image,
-    status: Number(req.body.vacancies) > 0 ? "Open" : "Closed",
+    // status: Number(req.body.vacancies) > 0 ? "Open" : "Closed",
+    status: "Open",
 });
 
 console.log("MongoDB document created successfully");

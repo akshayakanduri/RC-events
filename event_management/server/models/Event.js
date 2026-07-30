@@ -11,13 +11,11 @@ const eventSchema = new mongoose.Schema(
 
     category: {
       type: String,
-      required: true,
       trim: true,
     },
 
     location: {
       type: String,
-      required: true,
       trim: true,
       maxlength: 150,
     },
@@ -30,23 +28,19 @@ const eventSchema = new mongoose.Schema(
 
     date: {
       type: String,
-      required: true,
     },
 
     time: {
       type: String,
-      required: true,
     },
 
     payment: {
       type: Number,
-      required: true,
       min: 0,
     },
 
     vacancies: {
       type: Number,
-      required: true,
       default: 0,
     },
 

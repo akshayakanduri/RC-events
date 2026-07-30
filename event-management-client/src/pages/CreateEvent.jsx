@@ -128,7 +128,6 @@ function CreateEvent() {
                   className="form-control"
                   name="category"
                   onChange={handleChange}
-                  required
                 >
                   <option value="">Select Category</option>
 
@@ -156,7 +155,6 @@ function CreateEvent() {
                 className="form-control"
                 name="location"
                 onChange={handleChange}
-                required
               />
 
             </div>
@@ -185,7 +183,6 @@ function CreateEvent() {
                   className="form-control"
                   name="date"
                   onChange={handleChange}
-                  required
                 />
 
               </div>
@@ -200,7 +197,6 @@ function CreateEvent() {
                   placeholder="3 PM - 6 PM"
                   name="time"
                   onChange={handleChange}
-                  required
                 />
 
               </div>
@@ -218,7 +214,6 @@ function CreateEvent() {
                   className="form-control"
                   name="payment"
                   onChange={handleChange}
-                  required
                 />
 
               </div>
@@ -232,7 +227,6 @@ function CreateEvent() {
                   className="form-control"
                   name="vacancies"
                   onChange={handleChange}
-                  required
                 />
 
               </div>
