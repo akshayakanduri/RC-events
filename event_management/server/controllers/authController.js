@@ -57,10 +57,56 @@ if (req.file) {
     await fs.remove(req.file.path);
 }
 
-    let userExists = await User.findOne({email});
-    if(userExists) {
-        return res.status(400).json({error: 'User already exists'});
+    let userExists = await User.findOne({ email });
+
+if (userExists) {
+
+    // Already verified → cannot register again
+    if (userExists.isVerified) {
+        return res.status(400).json({
+            error: "User already exists"
+        });
     }
+
+    // User exists but NOT verified
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    userExists.name = name;
+    userExists.password = hashedPassword;
+    userExists.phone = phone;
+    userExists.location = location;
+
+    if (profileImage) {
+        userExists.profileImage = profileImage;
+    }
+
+    await userExists.save();
+
+    await OTP.deleteMany({
+        email,
+        action: "account_verification"
+    });
+
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+
+    await OTP.create({
+        email,
+        otp,
+        action: "account_verification"
+    });
+
+    await sendOTPEmail(
+        email,
+        otp,
+        "account_verification"
+    );
+
+    return res.status(200).json({
+        message: "A new OTP has been sent to your email.",
+        email
+    });
+}
 
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt); 
