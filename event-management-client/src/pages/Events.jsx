@@ -117,8 +117,14 @@ const fetchCategories = async () => {
     <div className="stats-card">
 
       <h2>
-        {[...new Set(events.map(event => event.location))].length}
-      </h2>
+      {
+        [...new Set(
+          events
+            .filter(event => event.location)
+            .map(event => event.location)
+        )].length
+      }
+    </h2>
 
       <p>Locations</p>
 
@@ -132,7 +138,7 @@ const fetchCategories = async () => {
 
       <h2>
         {events.reduce(
-          (total, event) => total + Number(event.vacancies),
+          (total, event) => total + (Number(event.vacancies) || 0),
           0
         )}
       </h2>
@@ -244,27 +250,39 @@ const fetchCategories = async () => {
 
                 <div>
                     <span><MapPin size={18} className="icon-primary" /></span>
-                    <p>{event.location}</p>
+                    <p>{event.location || "To Be Announced"}</p>
                 </div>
 
                 <div>
                     <span><CalendarDays size={18} className="icon-primary" /></span>
-                    <p>{new Date(event.date).toLocaleDateString()}</p>
+                    <p>
+                      {event.date
+                        ? new Date(event.date).toLocaleDateString()
+                        : "To Be Announced"}
+                    </p>
                 </div>
 
                 <div>
                     <span><Clock3 size={18} className="icon-primary" /></span>
-                    <p>{event.time}</p>
+                    <p>{event.time || "To Be Announced"}</p>
                 </div>
 
                 <div>
                     <span><Users size={18} className="icon-primary" /></span>
-                    <p>{event.vacancies} Vacancies</p>
+                    <p>
+                      {event.vacancies
+                        ? `${event.vacancies} Vacancies`
+                        : "Not Specified"}
+                    </p>
                 </div>
 
                 <div>
                     <span><Wallet size={18} className="icon-primary" /></span>
-                    <p>₹{event.payment}</p>
+                    <p>
+                      {event.payment
+                        ? `₹${event.payment}`
+                        : "Not Disclosed"}
+                    </p>
                 </div>
 
                 </div>

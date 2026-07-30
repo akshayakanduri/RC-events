@@ -187,11 +187,19 @@ exports.approveBooking = async (req, res) => {
     }
 
     // Event is already full
-    if (event.status === "Closed" || event.vacancies <= 0) {
-      return res.status(400).json({
-        message: "This event is closed.",
-      });
-    }
+    // Event manually closed
+if (event.status === "Closed") {
+  return res.status(400).json({
+    message: "This event is closed.",
+  });
+}
+
+// Vacancies not configured yet
+if (!event.vacancies || event.vacancies <= 0) {
+  return res.status(400).json({
+    message: "Please set the event vacancies before approving bookings.",
+  });
+}
 
     // Approve booking
     booking.status = "Approved";

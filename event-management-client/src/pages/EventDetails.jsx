@@ -115,7 +115,7 @@ function EventDetails() {
       </span>
 
       <span className="fs-5">
-        <MapPin size={18} className="icon-primary" /> {event.location}
+        <MapPin size={18} className="icon-primary" /> {event.location || "To Be Announced"}
       </span>
 
     </div>
@@ -134,42 +134,54 @@ function EventDetails() {
           <div className="col-md-6">
             <div className="info-card">
               <h6 className="text-muted mb-1"><MapPin size={18} className="icon-primary" /> Location</h6>
-              <h5>{event.location}</h5>
+              <h5>{event.location || "To Be Announced"}</h5>
             </div>
           </div>
 
           <div className="col-md-6">
             <div className="info-card">
               <h6 className="text-muted mb-1"><CalendarDays size={18} className="icon-primary" /> Date</h6>
-              <h5>{new Date(event.date).toLocaleDateString()}</h5>
+              <h5>
+                {event.date
+                  ? new Date(event.date).toLocaleDateString()
+                  : "To Be Announced"}
+              </h5>
             </div>
           </div>
 
           <div className="col-md-6">
             <div className="info-card">
               <h6 className="text-muted mb-1"><Clock3 size={18} className="icon-primary" /> Time</h6>
-              <h5>{event.time}</h5>
+              <h5>{event.time || "To Be Announced"}</h5>
             </div>
           </div>
 
           <div className="col-md-6">
             <div className="info-card">
               <h6 className="text-muted mb-1"><Wallet size={18} className="icon-primary" /> Payment</h6>
-              <h5>₹{event.payment}</h5>
+              <h5>
+                {event.payment
+                  ? `₹${event.payment}`
+                  : "Not Disclosed"}
+              </h5>
             </div>
           </div>
 
           <div className="col-md-6">
             <div className="info-card">
               <h6 className="text-muted mb-1"><Users size={18} className="icon-primary" /> Vacancies</h6>
-              <h5>{event.vacancies}</h5>
+              <h5>
+                {event.vacancies || "Not Specified"}
+              </h5>
             </div>
           </div>
 
           <div className="col-md-6">
             <div className="info-card">
               <h6 className="text-muted mb-1"><Shirt size={18} className="icon-primary" /> Dress Code</h6>
-              <h5>{event.dressCode}</h5>
+              <h5>
+                {event.dressCode || "No Dress Code"}
+              </h5>
             </div>
           </div>
 
@@ -183,12 +195,12 @@ function EventDetails() {
           </h4>
 
           <p className="event-description">
-            {event.description}
+            {event.description || "Description will be updated soon."}
           </p>
 
         <div className="mt-4 d-grid gap-3 d-md-flex">
 
-  {event.status === "Closed" || event.vacancies <= 0 ? (
+  {event.status === "Closed" ? (
     <button
       className="apply-btn"
       disabled
@@ -209,14 +221,25 @@ function EventDetails() {
     </button>
   )}
 
+  {event.mapLink || event.location ? (
   <a
-    href={event.mapLink || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.location)}`}
+    href={
+      event.mapLink ||
+      `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+        event.location
+      )}`
+    }
     target="_blank"
     rel="noopener noreferrer"
     className="location-btn"
   >
     <MapPin size={18} className="icon-primary" /> View Location
   </a>
+) : (
+  <button className="location-btn" disabled>
+    <MapPin size={18} className="icon-primary" /> Location Not Available
+  </button>
+)}
 
 </div>
 
